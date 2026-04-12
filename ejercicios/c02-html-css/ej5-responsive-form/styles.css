@@ -1,0 +1,212 @@
+:root {
+    --color-fondo: rgb(210, 210, 210);
+    --color-primario: rgb(57, 66, 129);
+    --color-secundario: rgb(106, 185, 254);
+    --color-caja: rgba(53, 171, 218, 0.511);
+    --radio: 10px;
+    --sombra: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--color-fondo);
+    font-family: arial;
+    text-align: center;
+}
+
+nav {
+    background-color: var(--color-primario);
+    border-radius: var(--radio);
+    padding: 1%;
+    
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0 20px;
+    align-items: center;
+    flex-direction: row;
+}
+
+nav div{
+    display: flex;
+    padding: 1.5%;
+    gap: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: rgb(0, 0, 0);
+    padding: 1%;
+    background-color: var(--color-secundario);
+    border-radius: var(--radio);
+}
+
+a:hover{
+    color: rgb(255, 255, 255);
+    box-shadow: var(--sombra);
+}
+
+img {
+    max-width: 100%;
+    box-shadow: var(--sombra);
+}
+
+/*selector de clase para configurar el nombre*/
+.nombre {
+    font-size: 2rem;
+    font-family: "Sora", sans-serif;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+ul, ol{
+    text-align: left;
+}
+
+footer{
+    text-align: left;
+    font-size: 0.8rem;
+}
+
+/*configuracion de las cajas de los flexbox*/
+
+.grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2%;
+    padding: 1%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    background-color: var(--color-caja);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+}
+
+.columna-foto {
+    flex: 35%;
+}
+
+.columna-texto {
+    flex: 1;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.tarjeta {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    background-color:  var(--color-secundario);
+
+    width: 80%;
+    margin:2%;
+}
+
+/*decoracion del formulario de la pagina contacto*/
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+    color:white;
+    margin: auto;
+
+    background-color: var(--color-primario);
+    box-shadow: var(--sombra);
+}
+
+.formulario input, .formulario textarea {
+    padding: 15px;
+    border: 1px solid black;
+    font-family: monospace;
+}
+
+.formulario button {
+    background-color: var(--color-primario);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: var(--radio);
+    cursor: pointer;
+}
+
+label{
+        padding:1%;
+    }
+
+
+/*cuando la resolucion sea menor a 768px este css va a sobreescribir las funciones que hay*/
+@media (max-width: 768px) {
+
+    /*convierto la barra de navegacion con los links de horizontal a vertical */
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+        height: auto;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .nav-links a {
+        width: 80%;
+        max-width: 300px;
+        text-align: center;
+        padding: 10px;
+    }
+
+    /* cambiamos el grid de row a column y centramos los items */
+    .grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1%;
+        padding: 1%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* agrandamos el tamaño de la clase tarjeta para que no quede tanta pantalla vacia */
+    .tarjeta-estudio {
+        flex: 1;
+        text-align: center;
+        padding: 15px;
+
+
+        width: 95%;
+        margin:2%;
+    }
+
+
+    /*agrandamos el tamaño de las cosas que aparecen en formulario para que sea mas facil presionar*/
+
+    .formulario{
+        max-width: 80%;
+    }
+
+    .formulario input, .formulario textarea {
+        padding: 25px;
+    }
+
+    .formulario button {
+        padding: 25px;
+    }
+
+    label{
+        padding:10px;
+    }
+}
