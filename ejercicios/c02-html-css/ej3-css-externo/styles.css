@@ -1,0 +1,80 @@
+body{
+    background-color: rgb(210, 210, 210);
+    font-family: arial;
+    text-align: center;
+}
+
+nav {
+    background-color: rgb(57, 66, 129);
+    text-align: center;
+    margin: 0;
+    padding: 1%;
+    border-radius: 15px;
+}
+
+nav div{
+    padding: 1.5%;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: rgb(0, 0, 0);
+    margin: 4%;
+    padding: 1%;
+    background-color: rgb(106, 185, 254);
+    border-radius: 10px;
+}
+
+a:hover{
+    color: rgb(255, 255, 255);
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
+}
+
+main div{
+    width: 70%;
+    background-color: rgb(105, 185, 255);
+    margin:2%;
+    display: inline-block;
+    border-radius: 10px;  
+}
+
+aside {
+    width: 45%;
+    margin:2%;
+    display: inline-block;
+    text-align: left;
+    vertical-align: text-top;
+
+}
+
+aside img {
+    max-width: 100%;
+}
+
+img {
+    max-width: 50%;
+}
+
+/*selector de clase*/
+.nombre {
+        font-size: 2rem;
+    font-family: "Sora", sans-serif;
+    font-weight: bold;
+}
+
+.titulo {
+    color:rgb(53, 53, 53);
+} 
+
+
+ul, ol{
+    text-align: left;
+}
+
+footer{
+    text-align: left;
+    margin-top: 0%;
+    font-size: 0.8rem;
+
+}
