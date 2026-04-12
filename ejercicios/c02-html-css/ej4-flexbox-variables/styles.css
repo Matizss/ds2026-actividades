@@ -1,0 +1,122 @@
+:root {
+    --color-fondo: rgb(210, 210, 210);
+    --color-primario: rgb(57, 66, 129);
+    --color-secundario: rgb(106, 185, 254);
+    --color-caja: rgba(53, 171, 218, 0.511);
+    --radio: 10px;
+    --sombra: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--color-fondo);
+    font-family: arial;
+    text-align: center;
+}
+
+nav {
+    background-color: var(--color-primario);
+    margin: 0;
+    padding: 1%;
+    border-radius: var(--radio);
+
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0 20px;
+    align-items: center;
+}
+
+nav div{
+    display: flex;
+    padding: 1.5%;
+    gap: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: rgb(0, 0, 0);
+    padding: 1%;
+    background-color: var(--color-secundario);
+    border-radius: var(--radio);
+}
+
+a:hover{
+    color: rgb(255, 255, 255);
+    box-shadow: var(--sombra);
+}
+
+main div{
+    width: 70%;
+    background-color: var(--color-secundario);
+    margin:2%;
+
+    border-radius: var(--radio);
+    box-shadow: var(--sombra); 
+}    
+
+img {
+    max-width: 100%;
+    box-shadow: var(--sombra);
+}
+
+/*selector de clase*/
+.nombre {
+    font-size: 2rem;
+    font-family: "Sora", sans-serif;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.titulo {
+    color:rgb(53, 53, 53);
+} 
+
+
+ul, ol{
+    text-align: left;
+}
+
+footer{
+    text-align: left;
+    font-size: 0.8rem;
+}
+
+
+.grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2%;
+    padding: 1%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    background-color: var(--color-caja);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+}
+
+.columna-foto {
+    flex: 35%;
+}
+
+.columna-texto {
+    flex: 1;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.tarjeta-estudio {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    background-color:  var(--color-secundario);
+}
