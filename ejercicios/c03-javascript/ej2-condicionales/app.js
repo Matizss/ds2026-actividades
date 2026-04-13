@@ -25,9 +25,9 @@ const diaDeLaSemana = (numero) => {
         case 3: console.log("Miércoles"); break;
         case 4: console.log("Jueves"); break;
         case 5: console.log("Viernes"); break;
-        case 6: console.log("Sabado"); break;
+        case 6: console.log("Sábado"); break;
         case 7: console.log("Domingo"); break;
 
-        default: console.log("Ingrese un numero entre el 1 y el 7." );
+        default: console.log("Ingrese un número entre el 1 y el 7." );
     }
 }
