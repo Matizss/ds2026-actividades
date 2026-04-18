@@ -24,6 +24,6 @@ boton.addEventListener ('click', (e) => {
         }
           
     } else {
-        mostrar.textContent = ("Error, ingrese un numero mayor a 1."); 
+        mostrar.textContent = ("Error, ingrese un numero mayor a 0."); 
     }    
 });
