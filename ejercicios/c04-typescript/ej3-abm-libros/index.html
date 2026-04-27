@@ -1,0 +1,67 @@
+<!-- Ejercicio 3 - ABM de libros en la página
+Objetivo: ombinar formulario + lista + estado en memoria, todo
+tipado (Extensión del Ej 2).
+Pasos:
+● Partir del HTML del Ej 2 y sumar un formulario para cargar
+libros (con todos los campos y un <div id="errorForm"></div>
+para mostrar los errores
+● Cada <li> del listado debe tener además un botón "Eliminar"
+que lo quita del array y re-renderiza.
+● En app.ts:
+○ Reusar la interface Libro del Ej 2.
+○ Array catalogo: Libro[] que empieza con 2-3 libros
+precargados.
+○ Funciones tipadas:
+- agregarLibro(libro: Libro): void — lo agrega al array y
+llama a renderizar.
+- eliminarLibro(isbn: string): void — lo saca del array y
+re-renderiza.
+- validarFormulario(): Libro | null — lee los inputs,
+valida que no estén vacíos / precio > 0, genera un ISBN
+random (ej: "AUTO-" + Date.now()) y devuelve un Libro, o
+null si hay error.
+○ El handler del botón Agregar:
+- Llamar a validarFormulario().
+- Si devuelve null → mostrar error en #errorForm.
+- Si devuelve un Libro → agregarLibro() + limpiar el form.
+● Traspilar: tsc app.ts
+● Abrir en el navegador y probar agregar y eliminar libros. -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Ejercicio 3</title>
+
+</head>
+<body>
+    <h1>Ejercicio 3</h1>
+    <h2>Catálogo</h2>
+    <input type="text" id="filtroAutor">
+    <button id="filtrar">Filtrar por autor</button>
+    <button id="mostrarDisponibles">Solo disponibles</button>
+    <button id="mostrarTodos">Ver todos</button>
+    <ul id="listado">
+
+    </ul>
+    <p id="stats"></p>
+
+    <h2>Agregar libro</h2>
+
+    <form> 
+        <input type="text" id="titulo" placeholder="Título">
+        <input type="text" id="autor" placeholder="Autor">
+        <input type="number" id="precio" placeholder="Precio">
+        <input type="checkbox" id="disponible"> Disponible
+        <input type="text" id="genero" placeholder="Género">
+
+        <button id="agregar">Agregar</button>
+    </form>
+
+    <div id="errorForm"></div>
+
+    <script src="app.js"> </script>
+</body>
+</html>
