@@ -1,0 +1,54 @@
+<!-- Ejercicio 2 — Catálogo de libros tipado
+Objetivo: practicar interfaces, arrays de objetos, filtros y
+renderizado en HTML.
+Pasos:
+● Crear un index.html con:
+○ <h1>Catálogo</h1>, <input type="text" id="filtroAutor">
+○ <button id="filtrar">Filtrar</button>
+○ <button id="mostrarDisponibles">Solo disponibles</button>
+○ <button id="mostrarTodos">Ver todos</button>
+○ <ul id="listado"> donde se van a mostrar los libros.
+○ <p id="stats"></p> para mostrar cantidad y precio promedio
+○ <script src="app.js"></script> al final del <body>
+○ Crear app.ts con una interface Libro isbn (string), titulo
+(string), autor (string), precio (number) disponible
+(boolean) y genero (string/opcional).
+● Escribir y tipar estas funciones:
+○ buscarPorAutor(autor: string): Libro[]
+○ librosDisponibles(): Libro[]
+○ precioPromedio(libros: Libro[]): number
+○ renderizar(libros: Libro[]): void → agrega cada libro como
+<li> en el <ul> y actualiza el <p> de stats con la cantidad
+y el promedio. 
+● Enganchar los botones:
+○ Filtrar → leer el input y llamar
+renderizar(buscarPorAutor(...)).
+○ Solo disponibles → renderizar(librosDisponibles()).
+○ Ver todos → renderizar(catalogo).
+● Al cargar la página, mostrar todos los libros por defecto.
+● Traspilar: tsc app.ts
+● Abrir en el navegador y probar los tres botones.-->
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Ejercicio 2</title>
+
+</head>
+<body>
+    <h1>Catálogo, Ejercicio 2</h1>
+    <input type="text" id="filtroAutor">
+    <button id="filtrar">Filtrar por autor</button>
+    <button id="mostrarDisponibles">Solo disponibles</button>
+    <button id="mostrarTodos">Ver todos</button>
+    <ul id="listado">
+
+    </ul>
+    <p id="stats"></p>
+
+    <script src="app.js"> </script>
+</body>
+</html>
