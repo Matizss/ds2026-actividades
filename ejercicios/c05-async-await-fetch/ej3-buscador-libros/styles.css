@@ -1,0 +1,24 @@
+.error {
+    color: red;
+    background-color: rgb(70, 70, 70);
+    font-family: arial;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.oculto {
+  display: none;
+}
+
+.nuevodiv {
+    color: rgb(27, 27, 27);
+    background-color: rgb(74, 114, 199);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    border-radius: 15px;
+    text-align: center;
+}
+
+h3{
+    font-size: 30px;
+}
