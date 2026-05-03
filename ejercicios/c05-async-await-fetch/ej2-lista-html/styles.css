@@ -1,0 +1,11 @@
+.error {
+    color: red;
+    background-color: rgb(70, 70, 70);
+    font-family: arial;
+    font-size: 25;
+    font-weight: bold;
+}
+
+.oculto {
+  display: none;
+}
