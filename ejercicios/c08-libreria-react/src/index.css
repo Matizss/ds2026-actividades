@@ -1,0 +1,20 @@
+.fondo {
+    background-image: url('/img/libreria.jpg'); 
+    background-size: cover;
+}
+
+.card-img-top {
+    height: 300px;
+    object-fit:scale-down;
+}
+
+.img-portada {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: scale-down; 
+}
+
+.oculto {
+    display: none;
+}
