@@ -1,4 +1,4 @@
-function Navbar() {
+function Header() {
   return (
     <nav className="navbar navbar-expand-lg py-3 sticky-top bg-primary-subtle" data-bs-theme="dark">
       <div className="container-fluid">
@@ -29,4 +29,4 @@ function Navbar() {
   );
 }
 
-export default Navbar
+export default Header;
