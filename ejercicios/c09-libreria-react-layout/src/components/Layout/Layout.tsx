@@ -8,7 +8,7 @@ interface LayoutProps { children: ReactNode };
 
 function Layout({ children }: LayoutProps) {
     return (
-    <div className="layout">
+    <div className="d-flex flex-column  min-vh-100">
         <Header />
         <Container fluid className="p-0">{children}</Container>
         <Footer />

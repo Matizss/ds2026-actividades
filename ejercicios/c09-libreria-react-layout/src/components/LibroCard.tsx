@@ -1,10 +1,6 @@
 import { useState } from "react";
-
-type Libro = {
-  titulo: string;
-  autor: string;
-  img: string;
-};
+import { Link } from "react-router-dom";
+import type { Libro } from "../types/libro";
 
 function LibroCard({ libro }: { libro: Libro }) {
   const [like, setLike] = useState(false);
@@ -16,10 +12,7 @@ function LibroCard({ libro }: { libro: Libro }) {
       <div className="card-body">
         <h5 className="card-title">{libro.titulo}</h5>
         <p className="card-text">{libro.autor}</p>
-        <a href="catalogo.html" className="btn btn-primary w-100 mb-2">
-          Ver más
-        </a>
-
+        <Link to={`/libros/${libro.id}`} className="btn btn-primary w-100 mb-2"> Ver más</Link>
         <button
           className={`btn w-100 ${
             like ? "btn-danger" : "btn-outline-danger"
