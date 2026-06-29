@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import type { Libro } from '../types/libro';
+import { z } from 'zod';
+import { libroSchema } from '../schemas/libroSchema';
 
 const IMG_PLACEHOLDER = 'https://placehold.co/300x400?text=Libro';
 
@@ -31,42 +33,37 @@ function LibroNuevo({ onAgregar }: Props) {
     });
   };
 
-  const validar = () => {
-    const err: Record<string, string> = {};
-    
-    if (!form.titulo.trim()) {
-      err.titulo = 'El título es obligatorio';
-    }
-    if (!form.autor.trim()) {
-      err.autor = 'El autor es obligatorio';
-    }
-    if (form.precio === '' || Number(form.precio) <= 0) {
-      err.precio = 'El precio debe ser mayor a 0';
-    }
-    
-    return err;
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const err = validar();
+    const resultado = libroSchema.safeParse(form);
     
-    if (Object.keys(err).length > 0) {
+    if (!resultado.success) {
+      const err: Record<string, string> = {};
+      
+      for (const issue of resultado.error.issues) {
+        const campo = String(issue.path[0]);
+        if (!err[campo]) {
+          err[campo] = issue.message;
+        }
+      }
+      
       setErrores(err);
       return;
     }
+    
+    setErrores({});
     
     // Si limpia los errores previos antes de avanzar (Buena práctica alternativa)
     setErrores({});
     
     onAgregar({
       id: Date.now(),
-      titulo: form.titulo,
-      autor: form.autor,
-      precio: Number(form.precio),
-      descripcion: form.descripcion,
+      titulo: resultado.data.titulo,
+      autor: resultado.data.autor,
+      precio: resultado.data.precio,
+      descripcion: resultado.data.descripcion,
       img: IMG_PLACEHOLDER,
-      disponible: form.disponible,
+      disponible: resultado.data.disponible,
     });
     
     navigate('/catalogo');
@@ -97,7 +94,11 @@ function LibroNuevo({ onAgregar }: Props) {
             name="descripcion" 
             value={form.descripcion} 
             onChange={handleChange} 
+            isInvalid={!!errores.descripcion}
         />
+        <Form.Control.Feedback type="invalid">
+          {errores.descripcion} 
+        </Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group className="mb-3">
