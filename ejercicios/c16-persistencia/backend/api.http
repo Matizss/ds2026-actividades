@@ -1,0 +1,88 @@
+@baseUrl = http://localhost:3000
+
+### Hola
+GET http://localhost:3000
+
+### Listar Libros
+GET {{baseUrl}}/api/libros/
+
+
+### Crear un libro
+POST {{baseUrl}}/api/libros
+Content-Type: application/json
+
+{
+  "titulo": "test nuevo libro",
+  "descripcion": "una descripción de prueba",
+  "autor": "test",
+  "precio": 777,
+  "img": "https://",
+  "disponible": true
+}
+
+### Eliminar un libro
+DELETE {{baseUrl}}/api/libros/1
+
+### Actualizar un libro
+PUT {{baseUrl}}/api/libros/3
+Content-Type: application/json
+
+{
+  "titulo": "test libro",
+  "autor": "test",
+  "precio": 777,
+  "img": "https://",
+  "disponible": false
+}
+
+### Listar Autores
+GET {{baseUrl}}/api/autores/
+
+### Crear un autor
+POST {{baseUrl}}/api/autores
+Content-Type: application/json
+
+{
+  "nombre": "test nuevo autor",
+  "nacionalidad": "china"
+}
+
+### Eliminar un autor
+DELETE {{baseUrl}}/api/autores/1
+
+### Actualizar un autor
+PUT {{baseUrl}}/api/autores/3
+Content-Type: application/json
+
+{
+  "nombre": "test autor actualizado",
+  "nacionalidad": "japon"
+}
+
+
+### ERRORES
+
+### Libro inexistente 404 
+GET {{baseUrl}}/api/libros/9999
+
+### Actualizar libro inexistente 404
+PUT {{baseUrl}}/api/libros/9999
+Content-Type: application/json
+
+{
+  "titulo": "no existe",
+  "autor": "no existe",
+  "descripcion": "no existe",
+  "precio": 100,
+  "img": "https://",
+  "disponible": true
+}
+
+### Eliminar libro inexistente 404
+DELETE {{baseUrl}}/api/libros/9999
+
+### Autor inexistente 404
+GET {{baseUrl}}/api/autores/9999
+
+### Eliminar autor inexistente 404
+DELETE {{baseUrl}}/api/autores/9999
