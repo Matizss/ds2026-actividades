@@ -1,0 +1,51 @@
+generator client {
+    provider = "prisma-client"
+    output   = "../src/generated/prisma"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Autor {
+  id           Int     @id @default(autoincrement())
+  nombre       String  @unique
+  nacionalidad String
+  libros       Libro[] // lado muchos no crea columna
+}
+
+model Categoria {
+  id     Int     @id @default(autoincrement())
+  nombre String  @unique
+  libros Libro[] // lado N:M: no crea columna
+}
+
+model Libro {
+  id          Int         @id @default(autoincrement())
+  titulo      String
+  descripcion String
+  precio      Int
+  img         String
+  disponible  Boolean     @default(true)
+
+  autorId     Int         // ← FK es una columna
+  autor       Autor       @relation(fields: [autorId], references: [id], onDelete: Restrict)
+
+  categorias  Categoria[] // N:M 
+}
+
+enum Rol {
+  ADMIN
+  CLIENTE
+}
+
+model Usuario {
+  id Int @id @default(autoincrement())
+  email String @unique // ← @unique: sin cuentas con el mismo mail
+  passwordHash String // ← el NOMBRE avisa qué se guarda acá
+  nombre String
+  rol Rol @default(CLIENTE) // ← nadie se registra como admin
+  creadoEn DateTime @default(now())
+}
+
