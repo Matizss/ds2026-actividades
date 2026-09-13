@@ -1,0 +1,120 @@
+@baseUrl = http://localhost:3000
+
+### Hola
+GET {{baseUrl}}/
+
+### LIBROS 
+
+### Listar libros (trae autor incluido)
+GET {{baseUrl}}/api/libros/
+
+### Detalle de un libro (trae autor + categorías)
+GET {{baseUrl}}/api/libros/1
+
+### Crear un libro
+POST {{baseUrl}}/api/libros
+Content-Type: application/json
+
+{
+  "titulo": "Test nuevo libro",
+  "descripcion": "una descripción de prueba",
+  "autorId": 1,
+  "precio": 777,
+  "img": "https://",
+  "disponible": true,
+  "categoriaIds": [1]
+}
+
+### Actualizar un libro
+PUT {{baseUrl}}/api/libros/3
+Content-Type: application/json
+
+{
+  "titulo": "Don Quijote (editado)",
+  "precio": 7400,
+  "disponible": false
+}
+
+### Eliminar un libro
+DELETE {{baseUrl}}/api/libros/3
+
+
+### AUTORES
+
+### Listar autores
+GET {{baseUrl}}/api/autores/
+
+### Detalle de un autor
+GET {{baseUrl}}/api/autores/1
+
+### Crear un autor
+POST {{baseUrl}}/api/autores
+Content-Type: application/json
+
+{
+  "nombre": "Test nuevo autor",
+  "nacionalidad": "china"
+}
+
+### Actualizar un autor
+PUT {{baseUrl}}/api/autores/6
+Content-Type: application/json
+
+{
+  "nacionalidad": "japon"
+}
+
+### ERRORES
+
+### 400 - título vacío
+POST {{baseUrl}}/api/libros
+Content-Type: application/json
+
+{
+  "titulo": "",
+  "descripcion": "algo",
+  "precio": 100,
+  "img": "https://x",
+  "autorId": 1
+}
+
+### 400 - id de params inválido pq no es un numero
+GET {{baseUrl}}/api/libros/abc
+
+### 404 - libro inexistente
+GET {{baseUrl}}/api/libros/9999
+
+### 404 - actualizar libro inexistente
+PUT {{baseUrl}}/api/libros/9999
+Content-Type: application/json
+
+{
+  "titulo": "no existe"
+}
+
+### 404 - eliminar autor inexistente
+DELETE {{baseUrl}}/api/autores/9999
+
+### 409 - autorId que no existe
+POST {{baseUrl}}/api/libros
+Content-Type: application/json
+
+{
+  "titulo": "libro fantasma",
+  "descripcion": "algo",
+  "precio": 100,
+  "img": "https://x",
+  "autorId": 9999
+}
+
+### 409 - nombre de autor repetido
+POST {{baseUrl}}/api/autores
+Content-Type: application/json
+
+{
+  "nombre": "George Orwell",
+  "nacionalidad": "Reino Unido"
+}
+
+### 409 - borrar un autor que tiene libros
+DELETE {{baseUrl}}/api/autores/2
