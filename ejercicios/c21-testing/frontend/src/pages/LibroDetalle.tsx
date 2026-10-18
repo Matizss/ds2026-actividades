@@ -4,6 +4,7 @@ import type { Libro } from '../types/libro';
 import { useFetch } from '../hooks/useFetch';
 import { useEffect } from 'react';
 import { Spinner, Alert } from 'react-bootstrap';
+import { formatearPrecio } from '../utils/formatearPrecio';
 
 function LibroDetalle() {
   const { id } = useParams();
@@ -49,7 +50,7 @@ function LibroDetalle() {
 
           <p>{libro.descripcion}</p>
 
-          <h3 className="text-primary mt-4">${libro.precio}</h3>
+          <h3 className="text-primary mt-4">{formatearPrecio(libro.precio)}</h3>
 
           <span className={`badge ${libro.disponible ? 'bg-success' : 'bg-secondary'} mb-3`}>
             {libro.disponible ? 'Disponible' : 'No disponible'}
