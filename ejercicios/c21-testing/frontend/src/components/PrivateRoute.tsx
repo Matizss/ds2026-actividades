@@ -1,0 +1,32 @@
+import { Navigate, Outlet } from 'react-router-dom';
+import { Spinner } from 'react-bootstrap';
+import { useAuth } from '../context/AuthContext';
+import type { Rol } from '../types/sesionType';
+
+interface PrivateRouteProps {
+  rol?: Rol;
+}
+
+function PrivateRoute({ rol }: PrivateRouteProps) {
+  const { usuario, cargando } = useAuth();
+
+  // 1. ¿ya sé quién sos? (todavía no llegó /auth/yo)
+  if (cargando) {
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{ height: '50vh' }}>
+        <Spinner animation="border" />
+      </div>
+    );
+  }
+
+  // 2. ¿sos alguien? (401)
+  if (!usuario) return <Navigate to="/login" replace />;
+
+  // 3. ¿podés? (403)
+  if (rol && usuario.rol !== rol) return <Navigate to="/sin-permiso" replace />;
+
+  // sí: pasá
+  return <Outlet />;
+}
+
+export default PrivateRoute;
