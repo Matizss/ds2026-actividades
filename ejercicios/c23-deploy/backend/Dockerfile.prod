@@ -15,6 +15,9 @@ COPY . .
 # Genera el cliente de Prisma (no necesita DATABASE_URL) y compila TS → dist/ (sin tests)
 RUN npx prisma generate && npm run build
 
+# tsc no copia el motor de consultas (.node): lo llevamos a dist/ a mano
+RUN cp src/generated/prisma/*.node dist/generated/prisma/
+
 # ---------- Etapa 2: runtime ----------
 FROM node:22-alpine
 WORKDIR /app
